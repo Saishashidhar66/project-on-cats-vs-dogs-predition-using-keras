@@ -4,9 +4,7 @@ import cv2
 import os
 
 DataDir= r"D:\shashi\py\kagglecatsanddogs_3367a\PetImages/"
-
 CATEGORIES=["Dog","Cat"]
-
 training_data=[]
 def create_training_data():
     for i in CATEGORIES:
@@ -35,24 +33,24 @@ for sample in training_data[:10]:
 
 
 
-X=[]
-y=[]
+features=[]
+label=[]
 
 for features,label in training_data:
-    X.append(features)
-    y.append(label)
+    features.append(features)
+    label.append(label)
 
-print(X[0].reshape(-1,100,100,1))
+print(features[0].reshape(-1,100,100,1))
 
 
-X=np.array(X).reshape(-1,100,100,1)
+features=np.array(features).reshape(-1,100,100,1)
 
 import pickle
 
 pickle_out=open("D:\shashi\py\Features.pickle","wb")
-pickle.dump(X,pickle_out)
+pickle.dump(features,pickle_out)
 pickle_out.close()
 
 pickle_out=open("D:\shashi\py\Labels.pickle","wb")
-pickle.dump(y,pickle_out)
+pickle.dump(label,pickle_out)
 pickle_out.close()
